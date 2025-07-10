@@ -1,0 +1,64 @@
+# SST_Models: Speech-to-Text Model Evaluation
+
+This repository contains Jupyter Notebooks and scripts for evaluating and comparing multiple speech-to-text (STT) models on a small English dataset. The workflow demonstrates how to extract audio samples, transcribe them using different models, and evaluate their accuracy using Word Error Rate (WER).
+
+## Contents
+
+- **assemblyai.ipynb**: Uses the AssemblyAI API to transcribe audio files and evaluate results.
+- **wav2vec.ipynb**: Uses Facebook's Wav2Vec 2.0 model (via Hugging Face Transformers) for transcription and WER analysis.
+- **whisper.ipynb**: Uses OpenAI's Whisper model for transcription and WER analysis.
+
+## Workflow Overview
+
+1. **Dataset Preparation**
+   - Extracts 20 English audio samples from the [Common Voice](https://commonvoice.mozilla.org/en/datasets) dataset.
+   - Saves both audio files and their reference transcriptions (`metadata.csv`).
+
+2. **Transcription**
+   - Each notebook demonstrates how to transcribe the audio files using a different STT model:
+     - **AssemblyAI** (API key required)
+     - **Wav2Vec 2.0** (open-source, runs locally)
+     - **Whisper** (open-source, runs locally)
+
+3. **Evaluation**
+   - Calculates the Word Error Rate (WER) for each sample by comparing the model's output to the reference transcription.
+   - Visualizes WER per sample using bar plots.
+
+## How to Use
+
+1. **Clone the repository** and open in Google Colab or your local Jupyter environment.
+2. **Prepare the dataset**:
+   - Download the Common Voice English dataset and extract it as shown in the notebooks.
+   - Run the data extraction cells to create the `/my_20_samples` folder with audio and metadata.
+3. **Run each notebook**:
+   - Install required dependencies as prompted.
+   - Follow the notebook steps to transcribe and evaluate.
+   - For AssemblyAI, insert your API key where indicated.
+
+## Requirements
+
+- Python 3.8+
+- Jupyter Notebook or Google Colab
+- Libraries: `transformers`, `torchaudio`, `librosa`, `openai-whisper`, `jiwer`, `matplotlib`, `pandas`, `ffmpeg` (for Whisper)
+
+## Results
+
+Each notebook outputs:
+- A CSV file with transcriptions and confidence scores (if available).
+- A plot showing the WER for each audio sample.
+- Example WER values for quick comparison.
+
+## Notes
+
+- **API keys**: AssemblyAI requires a valid API key.
+- **Hardware**: Whisper and Wav2Vec can be slow on CPU; GPU is recommended for faster inference.
+- **Dataset**: Only 20 samples are used for quick benchmarking and demonstration.
+
+## License
+
+This project is for educational and research purposes.
+
+---
+
+**Author:** Osama Mohamed Naguib  
+**Date:** July
